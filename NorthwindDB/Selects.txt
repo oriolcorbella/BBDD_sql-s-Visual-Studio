@@ -1,0 +1,45 @@
+
+1. Fes una query en SQL que mostri totes les columnes de tots els productes per
+pantalla. És a dir retorna totes les columnes i totes les files de la taula Products.
+
+  SELECT * FROM products;
+
+2. Mostra només la columna descripció de la taula Categories.
+
+  SELECT Description FROM Categories; 
+
+3. Retorna la informació de tots els clients per pantalla usant la taula Customers.  
+
+  SELECT * FROM Customers; 
+
+4. Mostra ara les columnes CategoryName i Description de la taula Categories.
+
+  SELECT CategoryName, Description FROM Categories;
+
+5. Mostra ara només la columna descripció de la taula Categories i només per la 
+fila on CategoryName = “Grains/Cereals”.
+
+  SELECT Description FROM Categories WHERE CategoryName = 'Grains/Cereals';
+
+6. Desenvolupa una consulta que retorni tota la informació relativa a tots els
+productes de la taula Products que tenen categoria = 1.
+
+  SELECT * FROM Products WHERE CategoryID = 1;
+
+7. Retorna el ProductID del producte que té “Filo Mix” per nom
+
+  SELECT ProductID FROM Products WHERE ProductName = 'Filo Mix';
+
+8. Mostra tota la info de tots els productes del SupplierID número 3. Usa la taula
+Products.
+
+  SELECT * FROM Products WHERE SupplierID = 3;
+
+9. Retorna tots els productes de la categoria 2 que tenen un preu > 20.
+
+  SELECT * FROM Products WHERE CategoryID = 2 AND UnitPrice > 20;
+
+10. Fes una query que retorni les dades de tots els clients alemanys.
+
+  SELECT * FROM Customers WHERE Country LIKE'Germany';
+  
