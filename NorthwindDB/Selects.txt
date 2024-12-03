@@ -2,7 +2,7 @@
 1. Fes una query en SQL que mostri totes les columnes de tots els productes per
 pantalla. És a dir retorna totes les columnes i totes les files de la taula Products.
 
-  SELECT * FROM products;
+  SELECT * FROM Products;
 
 2. Mostra només la columna descripció de la taula Categories.
 
@@ -43,3 +43,44 @@ Products.
 
   SELECT * FROM Customers WHERE Country LIKE'Germany';
   
+11. Retorna el nom i la data de naixement de l’empleat Steven Buchanan usant la
+taula Employees.
+
+  SELECT FirstName, LastName, BirthDate FROM Employees WHERE FirstName = 'Steven' AND LastName = 'Buchanan';
+
+12. Volem un llistat dels noms de tots els proveïdors japonesos. Usa la taula
+Suppliers 
+
+  SELECT CompanyName FROM Suppliers WHERE Country = 'Japan';
+
+13. Volem ara un llistat de les persones de contacte dels proveïdors britànics i el seu
+telèfon. Usa la taula Suppliers.
+  
+  SELECT ContactName, Phone FROM Suppliers WHERE Country = 'UK';
+
+14. Troba el nom de l’empresa d’enviaments que té el telèfon = (503) 555-3199. Usa
+la taula Shippers.
+  
+  SELECT CompanyName FROM ShippersWHERE Phone = '(503) 555-3199'; 
+
+15. Mostra el preu i el pes del ProductID = 69. 
+
+  SELECT UnitPrice, QuantityPerUnit FROM Products WHERE ProductID = 69;
+
+16.Retorna un llistat de tota la informació de tots els clients ordenats pel país de
+procedència alfabèticament.
+
+  SELECT *  FROM Customers ORDER BY Country ASC;
+
+17. Fes el recompte de quants productes hi ha de la categoria 2 que tenen un preu >
+20.
+
+  SELECT COUNT(*) AS TotalProducts FROM Products WHERE CategoryID = 2 AND UnitPrice > 20;
+
+18. Fes una query que retorni la xifra del producte més car de la taula Products. 
+  
+  SELECT MAX(UnitPrice) AS MostExpensiveProduct FROM Products;
+
+19. Retorna el preu mig de la taula Products
+
+  SELECT AVG(UnitPrice) AS UnitPrice FROM Products;
