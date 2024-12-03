@@ -72,8 +72,7 @@ procedència alfabèticament.
 
   SELECT *  FROM Customers ORDER BY Country ASC;
 
-17. Fes el recompte de quants productes hi ha de la categoria 2 que tenen un preu >
-20.
+17. Fes el recompte de quants productes hi ha de la categoria 2 que tenen un preu > 20.
 
   SELECT COUNT(*) AS TotalProducts FROM Products WHERE CategoryID = 2 AND UnitPrice > 20;
 
@@ -84,3 +83,11 @@ procedència alfabèticament.
 19. Retorna el preu mig de la taula Products
 
   SELECT AVG(UnitPrice) AS UnitPrice FROM Products;
+
+20. Mostra la data de la primera l’ordre creada. Usa la taula Orders.
+
+  SELECT MIN(orderDate) AS orderDate FROM Orders;
+
+21. Mostra el preu de la Order 10255 (Price x quantitat de tots els productes).
+
+  SELECT(UnitPrice) FROM orderdetails WHERE OrderID = "10255";
