@@ -15,11 +15,11 @@ CREATE TABLE Usuari (
     DNI CHAR(9) NOT NULL,
     Email VARCHAR(100) NOT NULL,
     Direccio VARCHAR(200) NOT NULL,
-    Num_Targeta VARCHAR(50) NOT NULL
+    Num_Targeta VARCHAR(50) NOT NULL,
     PRIMARY KEY (id_Usuari)
 );
 
-CREATE TABLE Cliente (
+CREATE TABLE Client (
     id_Client INT AUTO_INCREMENT,
     gusta_electronico BOOLEAN DEFAULT TRUE,
     PRIMARY KEY (id_Client)
