@@ -1,5 +1,4 @@
 
-
 c. Muestra el número de partidos jugados por equipo como lucal de los 3 equipos que hayan jugado más
 
     SELECT Equip_Local, COUNT(*) AS Num_Partidos FROM Partit GROUP BY Equip_Local ORDER BY Num_Partidos DESC LIMIT 3;
