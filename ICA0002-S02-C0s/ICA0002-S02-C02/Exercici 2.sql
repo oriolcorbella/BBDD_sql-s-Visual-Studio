@@ -1,19 +1,4 @@
-a. Selecciona el nombre y apellido de los árbitros que sean jugadores
-    SELECT P.Nom, P.Cognom1 FROM Persona P WHERE P.Num_SS IN (
-    SELECT A.Num_SS_Arbitre
-    FROM Arbitre A
-    JOIN Jugador J ON A.Num_SS_Arbitre = J.Num_SS_Jugador
-);
 
-b. Selecciona el nombre y apellido de los árbitros que nop sean jugadores
-
-    SELECT P.Nom, P.Cognom1 FROM Persona P WHERE P.Num_SS IN (
-    SELECT A.Num_SS_Arbitre
-    FROM Arbitre A
-    MINUS
-    SELECT J.Num_SS_Jugador
-    FROM Jugador J
-);
 
 c. Muestra el número de partidos jugados por equipo como lucal de los 3 equipos que hayan jugado más
 
