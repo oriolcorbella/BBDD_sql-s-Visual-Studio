@@ -43,7 +43,7 @@ Products.
 
   SELECT * FROM Customers WHERE Country LIKE'Germany';
   
-11. Retorna el nom i la data de naixement de l’empleat Steven Buchanan usant la
+11. Retorna el nom i la data de naixement de lempleat Steven Buchanan usant la
 taula Employees.
 
   SELECT FirstName, LastName, BirthDate FROM Employees WHERE FirstName = 'Steven' AND LastName = 'Buchanan';
@@ -58,7 +58,7 @@ telèfon. Usa la taula Suppliers.
   
   SELECT ContactName, Phone FROM Suppliers WHERE Country = 'UK';
 
-14. Troba el nom de l’empresa d’enviaments que té el telèfon = (503) 555-3199. Usa
+14. Troba el nom de lempresa denviaments que té el telèfon = 503 555-3199. Usa
 la taula Shippers.
   
   SELECT CompanyName FROM ShippersWHERE Phone = '(503) 555-3199'; 
@@ -78,16 +78,76 @@ procedència alfabèticament.
 
 18. Fes una query que retorni la xifra del producte més car de la taula Products. 
   
-  SELECT MAX(UnitPrice) AS MostExpensiveProduct FROM Products;
+  SELECT MAX(UnitPrice) AS MostExpensiveProduct FROM Products;
 
 19. Retorna el preu mig de la taula Products
 
   SELECT AVG(UnitPrice) AS UnitPrice FROM Products;
 
-20. Mostra la data de la primera l’ordre creada. Usa la taula Orders.
+20. Mostra la data de la primera lordre creada. Usa la taula Orders.
 
   SELECT MIN(orderDate) AS orderDate FROM Orders;
 
-21. Mostra el preu de la Order 10255 (Price x quantitat de tots els productes).
+21. Mostra el preu de la Order 10255 Price x quantitat de tots els productes.
 
   SELECT SUM (UnitPrice*Quantity) FROM orderdetails WHERE OrderID = "10255";
+
+22. Mostra el numero de productes de cada Order.
+
+SELECT OrderID, COUNT(ProductID) AS Numero_Productos FROM OrderDetails GROUP BY OrderID;
+
+23. Mostra el numero de productes de cada Order sempre que siguin mes de 3.
+
+  SELECT OrderID, COUNT(ProductID) AS Numero_Productos FROM OrderDetails GROUP BY OrderID;
+
+24. Mostra els suppliers de les Ciutats que comencen per B que tenen productes
+amb un preu major a 50.
+
+  SELECT OrderID, COUNT(ProductID) AS Numero_Productos FROM OrderDetails GROUP BY OrderID HAVING COUNT(ProductID) > 3;
+
+25. Mostra els clients dun país amb més de 7 lletres
+
+  SELECT DISTINCT Suppliers.SupplierName FROM Suppliers JOIN Products ON Suppliers.SupplierID = Products.SupplierID WHERE Suppliers.City LIKE 'B%' AND Products.Price > 50;
+
+26. Mostra les ordres davui.
+
+  SELECT DISTINCT CustomerName FROM Customers WHERE LENGTH(Country) > 7;
+
+27. Mostra les ordres de febrer del 1997 del empleat 2.
+
+  SELECT * FROM Orders WHERE OrderDate = CURDATE();
+
+28. Mostra la mitja de ordres per any.
+
+  SELECT * FROM Orders WHERE EmployeeID = 2 AND OrderDate BETWEEN '1997-02-01' AND '1997-02-28';
+
+29. Mostra el seu preu del producte més barat i el més car 2 Selects separats.
+
+  SELECT YEAR(OrderDate) AS Any, COUNT(OrderID) / COUNT(DISTINCT YEAR(OrderDate)) AS Mitjana_Ordres FROM Orders GROUP BY YEAR(OrderDate);
+
+30. Les IDs de les Ordres de 4 productes diferents o més indicant també el nom del
+client.
+
+  SELECT MIN(Price) AS Producte_Mes_Barat FROM Products; // SELECT MAX(Price) AS Producte_Mes_Car FROM Products;
+
+31. Mostra lordre amb més quantitat de productes.
+
+  SELECT Orders.OrderID, Customers.CustomerName
+  FROM Orders
+  JOIN OrderDetails ON Orders.OrderID = OrderDetails.OrderID
+  JOIN Customers ON Orders.CustomerID = Customers.CustomerID
+  GROUP BY Orders.OrderID, Customers.CustomerName
+  HAVING COUNT(DISTINCT OrderDetails.ProductID) >= 4;
+
+32. Mostra lempleat més gran i el més petit 2 Selects separats
+
+  SELECT OrderID, SUM(Quantity) AS Quantitat_Total FROM OrderDetails GROUP BY OrderID ORDER BY Quantitat_Total DESC LIMIT 1;
+
+
+33. Retorna ladreça, ciutat, codi postal i país de tots els clients tot junts amb un
+camp.
+  
+  SELECT EmployeeID, FirstName, LastName, BirthDateFROM Employees ORDER BY BirthDate ASC LIMIT 1;
+  SELECT EmployeeID, FirstName, LastName, BirthDate FROM Employees ORDER BY BirthDate DESC LIMIT 1;
+
+
