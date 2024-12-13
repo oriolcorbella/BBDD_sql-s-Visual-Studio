@@ -1,3 +1,14 @@
+a. Selecciona el nombre y apellido de los árbitros que sean jugadores utilizando conjuntos
+
+    (SELECT nombre, apellido1 FROM persona AS p, arbitro AS a WHERE p.num_ss = a.num_ss_arbitro)
+    INTERSECT
+    (SELECT nombre, apellido1 FROM persona AS p, jugador AS a WHERE p.num_ss = a.num_ss_jugador)
+
+b. Selecciona el nombre y apellido de los árbitros que no sean jugadores utilizando conjuntos
+
+    (SELECT nombre, apellido1 FROM persona AS p, arbitro AS a WHERE p.num_ss = a.num_ss_arbitro)
+    MINUS
+    (SELECT nombre, apellido1 FROM persona AS p, jugador AS j WHERE p.num_ss = j.num_ss_jugador)
 
 c. Muestra el número de partidos jugados por equipo como lucal de los 3 equipos que hayan jugado más
 

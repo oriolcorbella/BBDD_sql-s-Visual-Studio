@@ -103,11 +103,11 @@ SELECT OrderID, COUNT(ProductID) AS Numero_Productos FROM OrderDetails GROUP BY 
 24. Mostra els suppliers de les Ciutats que comencen per B que tenen productes
 amb un preu major a 50.
 
-  SELECT OrderID, COUNT(ProductID) AS Numero_Productos FROM OrderDetails GROUP BY OrderID HAVING COUNT(ProductID) > 3;
+  SELECT s.* FROM suppliers s, products p WHERE s.SupplierID = p.ProductID AND s.City LIKE 'B%' AND UnitPrice > 50;
 
 25. Mostra els clients dun país amb més de 7 lletres
 
-  SELECT DISTINCT Suppliers.SupplierName FROM Suppliers JOIN Products ON Suppliers.SupplierID = Products.SupplierID WHERE Suppliers.City LIKE 'B%' AND Products.Price > 50;
+  SELECT * FROM Customers WHERE LENGTH(Country) = 7;
 
 26. Mostra les ordres davui.
 
