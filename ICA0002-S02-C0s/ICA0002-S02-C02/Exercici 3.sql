@@ -1,10 +1,12 @@
 a. Selecciona la id de los suscriptores que han comprado alguna entrega como clientes
 
-    SELECT DISTINCT S.id_Subscriptor FROM Subscriptor S JOIN Client_Entrega CE ON S.id_Subscriptor = CE.id_Client;
+    (SELECT id_subscritor FROM subscritor_coleccion)
+	INTERSECT
+	(SELECT id_cliente FROM cliente_entrega)
 
 b. Selecciona el nombre de las colecciones junto con el número de entregas de cada una de ellas
 
-    SELECT E.Nom_Coleccio, COUNT(*) AS Num_EntregasFROM Entrega E GROUP BY E.Nom_Coleccio;
+    SELECT E.Nom_Coleccio, COUNT(*) AS Num_Entregas FROM Entrega E GROUP BY E.Nom_Coleccio;
 
 c. Selecciona las entregas con más de dos regalos
 
